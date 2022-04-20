@@ -1,0 +1,45 @@
+{% extends 'cr/cr_layout.html' %}
+{% block cr_complaints %}active{% endblock %}
+{% block cr_content %}
+<div class="oneGrid">
+    <a class="btn btn-primary create-btn" type="submit" href="{{ url_for('new_cr_complaint') }}">Create Complaint</a>
+</div>
+
+<div class="card-deck grid">
+    {% for complaint in complaints %}
+        <div class="card">
+            {% if complaint.status=='Unresolved' %}
+                <div class="card-header bg-danger">
+                    <div class="article-metadata row justify-content-between">
+                        <div class="col-md-6">
+                            <h4 class="card-title text-white font-weight-bold">{{ complaint.title }}</h4>
+                        </div> 
+                        <div class="col-md-4 mt-1">
+                            <small class="text-white" style="font-size: 14px;">By: {{ complaint.author.firstname }} {{complaint.author.lastname}}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">                                       
+                    <p style="color:black;">{{complaint.content}}</p>
+                    <h6 style="color:red; text-align: center; font-weight:bold;">{{ complaint.status }}</h6>
+                </div>
+            {% else %}
+                <div class="card-header bg-success">
+                    <div class="article-metadata row justify-content-between">
+                        <div class="col-md-6">
+                            <h4 class="card-title text-white font-weight-bold">{{ complaint.title }}</h4>
+                        </div> 
+                        <div class="col-md-4 mt-1">
+                            <small class="text-white" style="font-size: 14px;">By: {{ complaint.author.firstname }} {{complaint.author.lastname}}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">                                       
+                    <p style="color:black;">{{complaint.content}}</p>
+                    <h6 style="color:green; text-align: center; font-weight:bold;">{{ complaint.status }}</h6>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

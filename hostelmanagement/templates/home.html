@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block content %}
+    {% if announcements %}
+        {% for announcement in announcements %}
+            <h1>{{announcement.title}}</h1>
+            <p>{{announcement.content}}</p>
+            <h2>{{announcement.author}}</h2>
+            <h4>{{announcement.date_posted}}</h4>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <h3>No Announcements Yet!</h3>
+    {% endif %}
+{% endblock content %}

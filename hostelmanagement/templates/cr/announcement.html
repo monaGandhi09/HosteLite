@@ -1,0 +1,32 @@
+{% extends 'cr/cr_layout.html' %}
+{% block cr_content %}
+<style>
+    .card{
+        padding: 2%;
+    }
+</style>
+
+<div class="container" style="padding: 0 20%;">
+    <h2 style="text-align: center;">Update Announcement</h2><br>
+    <div class="card">
+    <h4>{{single_announcement.title}}</h4>
+    <p style="color: black">{{single_announcement.content}}</p>
+    <p style="color: black">Author: {{single_announcement.author.firstname}} {{single_announcement.author.lastname}}</p>
+    <p>{{single_announcement.date_posted.strftime('%d-%m-%Y %H:%M:%S')}}</p>
+
+    <div class="row">
+        {% if user==single_announcement.author %}
+
+            <div class="col-md-2"><a type="submit" class="btn btn-warning" href="{{ url_for('update_announcement', announcement_id=single_announcement.id) }}">
+                Update
+            </a></div>
+            <div class="col-md-2"><form action="{{ url_for('delete_announcement', announcement_id=single_announcement.id) }}" method="POST">
+                <button class="btn btn-danger" type="submit">Delete</button>
+            </form></div>
+
+        {% endif %}
+        
+    </div>  
+    </div></div>
+    <hr>
+{% endblock cr_content %}

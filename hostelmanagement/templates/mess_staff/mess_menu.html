@@ -1,0 +1,24 @@
+{% extends 'mess_staff/mess_layout.html' %}
+{% block display_menu %}active{% endblock %}
+{% block mess_content %}
+    <h4 class="mb-2 font-weight-bold" style="text-align: center; padding-top: 20px;">Mess Menu</h4>
+    <div class="card-deck grid-mess ml-2 mr-2">
+
+        {% for item in messMenu %}
+            <div class="card-mess ml-1 mr-1">
+                <div class="card-header">
+                    <h3 style="text-align: center;" class="card-title">{{ item.type_of_meal }}</h3>
+                </div>
+                <div class="card-body" style="padding-top: 0px;">                    
+                    <p style="text-align: right; margin-bottom: 0px;"><small>Date: {{item.date_posted.strftime('%d-%m-%Y')}}</small></p>
+                    <div style="margin:auto;" class="col-md-5"><img width=125px height=125px src="{{ url_for('static', filename='menu_pics/' + item.image) }}" alt="food"></div>
+                    <p style="color: black; text-align: center; margin-bottom: 0px; margin-top: 10px; ">{{item.menu}}</p>
+                </div>
+                <div class="text-center mb-2">
+                    <a type="submit" class="btn btn-warning" href="{{ url_for('update_menu', id=item.id) }}">Update</a>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

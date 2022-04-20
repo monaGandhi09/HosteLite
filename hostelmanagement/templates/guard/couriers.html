@@ -1,0 +1,42 @@
+{% extends 'guard/guard_layout.html' %}
+{% block guard_couriers %}active{% endblock %}
+{% block guard_content %}
+<div class="oneGrid">
+    <a class="btn btn-primary create-btn" type="submit" href="{{url_for('new_courier_record')}}">Create New Record</a>
+</div>
+
+    {% if couriers %}
+        <h4 style="text-align: center; font-weight: bold;">Courier Records</h4>
+        <table class=" table table-hover">
+            <thead class='thead-light'>
+                <tr>
+                    <th>For</th>
+                    <th>College ID</th>
+                    <th>From</th>
+                    <th>Date and Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for courier in couriers %}
+                <tr>
+                    <td>{{courier.user.firstname}} {{courier.user.lastname}}</td>
+                    <td>{{courier.user.college_id}}</td>
+                    <td>{{courier.from_name}}</td>
+                    <td>{{courier.date_arrived.strftime('%d-%m-%Y %H:%M:%S')}}</td>
+                    {% if courier.status %}
+                        <td>Collected</td>
+                    {% else %}
+                        <td>Pending</td>
+                    {% endif %}
+                </tr> 
+            {% endfor %}
+            </tbody>
+            
+        </table>
+                    
+    {% else %}
+        <h3>No Entries Yet</h3>
+    {% endif %}
+
+{% endblock %}

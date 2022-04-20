@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+<style>
+    body{
+        /* background-image: url('https://vjtimumbai.in/wp-content/uploads/2020/07/VJTI-LandingPageV3.jpg'); */
+        /* background-image: url({{ url_for('static', filename='bgvjti.jpeg') }});
+        background-repeat: no-repeat;
+        background-size: contain; */
+    }
+</style>
+    <main role="main" class="col-md-12 ml-0 mr-0 mt-2 col-lg-12 px-md-4">
+                
+        <div class="flash">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        
+    </main>
+    <div class="jumbotron mt-3 text-center">
+        <h1 class="text-center font-weight-bold">HosteLite</h1>
+        <p>HosteLite is  a hostel management which has been designed to provide a computerized process that is stress free, reliable and quick through the use of Python computer programming language and SQLite database application to both the students and the staff in charge of the registration and hostel management processes.</p>
+    </div>    
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block content %}
+    <style>
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+    </style>
+    <section id="loginPage">
+    <div class="text-center">
+        <div class="loginForm">
+        <form method="POST" action="" class="form-signin">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <img class="mt-4" src="data:image/png;base64,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" alt="" width="172" height="172">
+                <h3 class="h3 mb-3 font-weight-bold">Please sign in</h3>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            <small class="text-muted ml-2">
+                <a href="#">Forgot Password?</a>
+            </small>
+        </form>
+        </div>
+        <div class="border-top pt-3 ml-auto mr-auto" style="width: 40%;">
+            <small class="text-muted">
+                Need An Account? <a class="ml-2" href="{{ url_for('application') }}">Apply Now</a>
+            </small>
+        </div>
+    </div>
+    </section>
+{% endblock content %}

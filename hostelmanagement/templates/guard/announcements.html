@@ -1,0 +1,24 @@
+{% extends 'guard/guard_layout.html' %}
+{% block guard_announcements %}active{% endblock %}
+{% block guard_content %}
+<h4 class="mb-2 font-weight-bold" style="text-align: center; padding-top: 20px;">Announcements</h4>
+<div class="card-deck grid">
+        {% for announcement in announcements %}
+            <div class="card">
+                <div class="card-header">
+                    <div class="article-metadata">
+                        <a class="mr-2" href="#">{{announcement.author.firstname}} {{announcement.author.lastname}}</a>
+                        <small class="text-muted">{{announcement.date_posted.strftime('%d-%m-%Y')}}</small>   
+                    </div>
+                </div>
+                <div class="card-body">                    
+                    <h3 class="card-title">{{ announcement.title }}</h3>                    
+                    <p style="color: black;">{{announcement.content}}</p>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    </div>
+{% endblock %}

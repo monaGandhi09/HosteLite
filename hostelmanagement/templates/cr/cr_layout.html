@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="sidebar-sticky pt-3">
+
+                    <ul class="nav flex-column">
+                        <li class="nav-item pt-2 onHover {% block cr_announcements %}{% endblock %}">
+                            <a class="nav-link" href="{{ url_for('display_announcements') }}">Announcements</a>
+                        </li>
+                        <!-- <li class="nav-item onHover {% block cr_update %}{% endblock %}">
+                            <a class="nav-link" href="{{ url_for('update_cr_account') }}">Update Profile</a>
+                        </li>
+                        <li class="nav-item onHover {% block cr_couriers %}{% endblock %}">
+                            <a class="nav-link" href="{{ url_for('display_cr_couriers') }}">Couriers</a>
+                        </li>
+                        <li class="nav-item onHover {% block cr_entryexit %}{% endblock %}">
+                            <a class="nav-link" href="{{ url_for('display_cr_entry_exits') }}">Exits-Entries</a>
+                        </li> -->
+                        <li class="nav-item onHover {% block cr_complaints %}{% endblock %}">
+                            <a class="nav-link" href="{{url_for('display_cr_complaints')}}">Complaints</a>
+                        </li>
+                        <!-- <li class="nav-item onHover {% block cr_menu %}{% endblock %}">
+                            <a class="nav-link" href="{{ url_for('cr_mess_menu') }}">Mess Menu</a>
+                        </li> -->
+                        <li class="nav-item mt-3 ml-auto mr-auto">
+                            <a class="nav-link toButton pl-5 pr-5" style="color: white; font-weight: 600" href="{{ url_for('logout') }}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 mt-2 ml-sm-auto col-lg-10 px-md-4">
+                
+                <div class="flash">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                {% block cr_content %}
+                {% endblock cr_content %}
+            </main>
+        </div>
+    </div>
+{% endblock %}

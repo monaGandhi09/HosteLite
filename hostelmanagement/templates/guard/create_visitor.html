@@ -1,0 +1,58 @@
+{% extends 'guard/guard_layout.html' %}
+{% block guard_visitors %}active{% endblock %}
+{% block guard_content %}
+    <div class="card mt-3 mb-4">
+        <div class="card-header text-white font-weight-bold mb-4" style="background: #6d7fcc;">
+            Visitor's Entry
+        </div>
+        
+        <div class="card-body">
+            <form action="" method='POST'>
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+
+                    <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.name.label(class="form-control-label") }}
+                        {{ form.name(class="form-control form-control-lg") }}
+                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.student_college_id.label(class="form-control-label") }}
+                        {{ form.student_college_id(class="form-control form-control-lg") }}
+                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.room_no.label(class="form-control-label") }}
+                        {{ form.room_no(class="form-control form-control-lg") }}
+                    </div>
+                    </div>
+
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.hostel_block.label(class="form-control-label") }}
+                        {{ form.hostel_block(class="form-control form-control-lg") }}
+                    </div>
+                    </div>
+
+                    <div class="col-12">
+                    <div class="form-group">
+                        {{ form.entryexit.label(class="form-control-label") }}
+                        {{ form.entryexit(class="form-control form-control-lg") }}
+                    </div>
+                    </div>
+
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'admin/admin_layout.html' %}
+{% block admin_applications %}active{% endblock %}
+{% block admin_content %}
+    <div class="container">
+        <div class="jumbotron" style="width: 40%; margin-left:auto; margin-right:auto;">
+            <h6 class="text-black mt-3">Application ID: {{ application.id }}</h6>
+            <h6 class="text-black mt-3">Applicant Name: {{application.firstname}} {{application.lastname}}</h6>
+            <h6 class="text-black mt-3">College ID: {{ application.college_id }}</h6>
+            <h6 class="text-black mt-3">Email: {{ application.email }}</h6>
+            <h6 class="text-black mt-3">Contact Number: {{ application.phone }}</h6>
+            <h6 class="text-black mt-3">Address: {{ application.address }}</h6>
+            <h6 class="text-black mt-3">City: {{ application.city }}</h6>
+            <h6 class="text-black mt-3">Family Income: {{ application.income }}</h6>
+            <h6 class="text-black mt-3">Course: {{ application.course }}</h6>
+            <h6 class="text-black mt-3">Department: {{ application.department }}</h6>
+            <div class="text-center">
+                <form action="", method="POST">
+                    <button type="submit" class="btn btn-primary btn-lg">Allot</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock admin_content %}
+    

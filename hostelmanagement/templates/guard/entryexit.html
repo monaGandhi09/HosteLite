@@ -1,0 +1,38 @@
+{% extends 'guard/guard_layout.html' %}
+{% block guard_entryexit %}active{% endblock %}
+{% block guard_content %}
+<div class="oneGrid">
+    <a class="btn btn-primary create-btn" type="submit" href="{{url_for('new_entry_exit_record')}}">Create New Record</a>
+</div>
+    {% if entryexits %}
+        <h4 style="text-align: center; font-weight: bold;">Entry/Exit Records</h4>
+        <table class=" table table-hover">
+            <thead class='thead-light'>
+                <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>College ID</th>
+                    <th>Date and Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entryexits %}
+                <tr>
+                    {% if entry.status %}
+                        <td>Entry</td>
+                    {% else %}
+                        <td>Exit</td>
+                    {% endif %}
+                    <td>{{entry.user.firstname}} {{entry.user.lastname}}</td>
+                    <td>{{entry.user.college_id}}</td>
+                    <td>{{entry.datetime.strftime('%d-%m-%Y %H:%M:%S')}}</td>
+                </tr> 
+            {% endfor %}
+            </tbody>
+            
+        </table>
+                    
+    {% else %}
+        <h3>No Entries Yet</h3>
+    {% endif %}
+{% endblock guard_content %}

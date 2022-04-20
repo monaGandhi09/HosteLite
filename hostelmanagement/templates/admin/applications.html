@@ -1,0 +1,66 @@
+{% extends 'admin/admin_layout.html' %}
+{% block admin_applications %}active{% endblock %}
+{% block admin_content %}
+
+    <h3 class="font-weight-bold text-center">Pending Applications</h3>
+        {% if pending_apps.count()!=0 %}
+            <div class="row">
+                {% for pending_app in pending_apps %}
+                    <div class="col-md-4 text-center">
+                        <div class="card">
+                            <a href="{{ url_for('individual_applications', id=pending_app.id) }}">
+                                <h4 class="font-weight-bold">{{pending_app.firstname}} {{pending_app.lastname}}</h4>
+                            </a>
+                            <p class="text-muted">{{pending_app.email}}</p>
+                            <small class="text-muted">{{pending_app.college_id}}</small>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h5 class="font-weight-normal mt-3 text-center">No Pending Applications</h5>  
+        {% endif %}
+        <hr>
+    <h3 class="font-weight-bold text-center">Confirmed Applications</h3>
+
+        {% if confirmed_apps %}
+            <div class="card-deck grid-accounts">
+
+                {%for user in confirmed_apps %}
+                    <div class="flip-card ml-3 mb-3 mt-3">
+
+                        <div class="flip-card-inner">
+
+                        <div class="flip-card-front app-front">
+                                <h3 class="pt-1 pb-1 text-white">{{ user.firstname}} {{ user.lastname }}</h3>
+                                <h6 class="card-title">{{ user.college_id }}</h6>
+                                <p class="card-text text-muted">{{ user.email }}</p>
+                        </div>
+
+                        <div class="flip-card-back guard-back">
+
+                            <div class="container back-data">
+                                <p class="mb-1">Phone: {{ user.phone }}</p>
+                                <p class="mb-1">Address: {{ user.address }}</p>
+                                <p class="mb-1">Course: {{ user.course }}</p>
+                                <p class="mb-1">Department: {{ user.department }}</p>
+                                <p class="mb-1">Address: {{ user.address }}</p>
+                                {% if user.status %}
+                                    <p class="mb-1">Room Status: Alloted</p>
+                                {% else %}
+                                    <p class="mb-1">Room Status: Pending</p>
+                                {% endif %}
+                            </div>
+
+                        </div>
+
+                        </div>
+
+                    </div>
+                {% endfor %}
+
+            </div>
+        {% else %}
+            <h3>No Confirmed Applications</h3>  
+        {% endif %}
+{% endblock admin_content%}

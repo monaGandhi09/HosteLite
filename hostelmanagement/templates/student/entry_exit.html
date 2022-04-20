@@ -1,0 +1,78 @@
+{% extends 'student/students_layout.html' %}
+{% block student_exit_entry %}active{% endblock student_exit_entry %}
+{% block student_content %}
+
+    <div class="container-fluid">
+        <div class="row mt-4">
+
+            <div class="col-md-6">
+                {% if entries %}
+                <h4 style="text-align: center; font-weight: bold;">Entry/Exit Records</h4>
+                <table class=" table table-hover">
+                    <thead class='thead-light'>
+                        <tr>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Date and Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in entries %}
+                        <tr>
+                            {% if entry.status %}
+                                <td>Entry</td>
+                            {% else %}
+                                <td>Exit</td>
+                            {% endif %}
+                            <td>{{entry.user.firstname}}</td>
+                            <td>{{entry.datetime.strftime('%d-%m-%Y %H:%M:%S')}}</td>
+                        </tr> 
+                    {% endfor %}
+                    </tbody>
+                    
+                </table>
+                    
+                {% else %}
+                    <h3>No Entries Yet</h3>
+                {% endif %}
+            </div>
+            
+            <div class="col-md-6">
+                {% if visitors %}
+                <h4 style="text-align: center; font-weight: bold;">Visitor Records</h4>
+                <table class=" table table-hover">
+                    <thead class='thead-light'>
+                        <tr>
+                            <th>Name</th>
+                            <th>Visited</th>
+                            <th>Entry/Exit</th>
+                            <th>Date and Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for visitor in visitors %}
+                        <tr>
+                            <td>{{visitor.name}}</td>
+                            <td>{{visitor.user.firstname}}</td>
+                            {% if visitor.status %}
+                                <td>Exit</td>
+                            {% else %}
+                                <td>Entry</td>
+                            {% endif %}
+                            <td>{{visitor.datetime.strftime('%d-%m-%Y %H:%M:%S') }}</td>
+                        </tr> 
+                    {% endfor %}
+                    </tbody>
+                    
+                </table>
+            
+                {% else %}
+                    <h3>No Entries Yet</h3>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+    
+    
+{% endblock %}
