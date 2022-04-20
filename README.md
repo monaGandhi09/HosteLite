@@ -4,7 +4,7 @@ Team name: HackOverflow
 
 ## Team members
 * Harshil Doshi - harshildoshi6333@gmail.com
-* Akshat Savla - akshat000822@gmail.com
+* Mona Gandhi - monagandhi09@gmail.com
 
 ## Description
 - HosteLite is a system which manages data of students, staff, students' representative, admission process, mess and also helps in maintaining exit-entry records of students who stay in the hostel, visitors and couriers delivered to them.
