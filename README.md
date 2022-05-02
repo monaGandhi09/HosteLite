@@ -1,6 +1,6 @@
 # HosteLite - One Place for all your tedious Tasks
 
-Team name: HackOverflow
+Group number: 10
 
 ## Team members
 * Harshil Doshi - harshildoshi6333@gmail.com
