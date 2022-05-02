@@ -1,10 +1,9 @@
 # HosteLite - One Place for all your tedious Tasks
-
-Group number: 10
+HCI Project Group Number: 10
 
 ## Team members
-* Harshil Doshi - harshildoshi6333@gmail.com
-* Mona Gandhi - monagandhi09@gmail.com
+* Harshil Doshi - hddoshi_b18@ce.vjti.ac.in - 181070018
+* Mona Gandhi - mbgandhi_b18#ce.vjti.ac.in - 181071021
 
 ## Description
 - HosteLite is a system which manages data of students, staff, students' representative, admission process, mess and also helps in maintaining exit-entry records of students who stay in the hostel, visitors and couriers delivered to them.
