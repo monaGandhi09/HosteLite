@@ -17,8 +17,7 @@ Team name: HackOverflow
 
 - It does not require the person handling the system to be very efficient or to be good at calculations. It greatly eases the work of efficiently managing the hostel.
 
-* GitHub repo link: [Link to repository](https://github.com/Harshil333/HosteLite)
-* Drive link: [Link to Video](https://drive.google.com/file/d/1Y6SgxeH-jAS8-5mF3VdmFSurwbgWK0be/view?usp=sharing)
+* GitHub repo link: [Link to repository](https://github.com/monaGandhi09/HosteLite)
 
 ## Technology stack
 
